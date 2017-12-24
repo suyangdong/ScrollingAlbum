@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		993936551FEF60D700BF26AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936541FEF60D700BF26AB /* AppDelegate.swift */; };
+		993936571FEF60D700BF26AB /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936561FEF60D700BF26AB /* AlbumViewController.swift */; };
+		9939365A1FEF60D700BF26AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 993936581FEF60D700BF26AB /* Main.storyboard */; };
+		9939365C1FEF60D700BF26AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9939365B1FEF60D700BF26AB /* Assets.xcassets */; };
+		9939369B1FEFF5E000BF26AB /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936991FEFF5E000BF26AB /* PhotoModel.swift */; };
+		993936B41FF002EF00BF26AB /* HDCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936B31FF002EF00BF26AB /* HDCollectionViewCell.swift */; };
+		993936B61FF0033D00BF26AB /* ThumbnailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936B51FF0033D00BF26AB /* ThumbnailCollectionViewCell.swift */; };
+		993936E31FF00F9300BF26AB /* UIImageEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936E21FF00F9300BF26AB /* UIImageEx.swift */; };
+		994789E11FF0B9770041CC04 /* bird_hills_nature_sunset_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789C71FF0B9740041CC04 /* bird_hills_nature_sunset_hd.JPG */; };
+		994789E21FF0B9770041CC04 /* barton_nature_lake.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789C81FF0B9740041CC04 /* barton_nature_lake.JPG */; };
+		994789E31FF0B9770041CC04 /* vertical_strip_hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789C91FF0B9740041CC04 /* vertical_strip_hd.png */; };
+		994789E41FF0B9770041CC04 /* winsor_skyline.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789CA1FF0B9740041CC04 /* winsor_skyline.png */; };
+		994789E51FF0B9770041CC04 /* barton_nature_swan_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789CB1FF0B9740041CC04 /* barton_nature_swan_hd.JPG */; };
+		994789E61FF0B9770041CC04 /* bird_hills_nature_foliage_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789CC1FF0B9740041CC04 /* bird_hills_nature_foliage_hd.JPG */; };
+		994789E71FF0B9770041CC04 /* bird_hills_nature_sunset.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789CD1FF0B9750041CC04 /* bird_hills_nature_sunset.JPG */; };
+		994789E81FF0B9770041CC04 /* leslie_park.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789CE1FF0B9750041CC04 /* leslie_park.png */; };
+		994789E91FF0B9770041CC04 /* willowtree_apartment_sunset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 994789CF1FF0B9750041CC04 /* willowtree_apartment_sunset.jpg */; };
+		994789EA1FF0B9770041CC04 /* barton_nature_leeve_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789D01FF0B9750041CC04 /* barton_nature_leeve_hd.JPG */; };
+		994789EB1FF0B9770041CC04 /* horizontal_strip_hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789D11FF0B9750041CC04 /* horizontal_strip_hd.png */; };
+		994789EC1FF0B9770041CC04 /* bird_hills_nature_foliage.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789D21FF0B9750041CC04 /* bird_hills_nature_foliage.JPG */; };
+		994789ED1FF0B9770041CC04 /* barton_nature_swan.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789D31FF0B9750041CC04 /* barton_nature_swan.JPG */; };
+		994789EE1FF0B9770041CC04 /* winsor_skyline_hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789D41FF0B9750041CC04 /* winsor_skyline_hd.png */; };
+		994789EF1FF0B9770041CC04 /* huron_river_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789D51FF0B9750041CC04 /* huron_river_hd.JPG */; };
+		994789F01FF0B9770041CC04 /* barton_nature_area_bridge.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789D61FF0B9760041CC04 /* barton_nature_area_bridge.JPG */; };
+		994789F11FF0B9770041CC04 /* barton_nature_lake_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789D71FF0B9760041CC04 /* barton_nature_lake_hd.JPG */; };
+		994789F21FF0B9770041CC04 /* leslie_park_hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789D81FF0B9760041CC04 /* leslie_park_hd.png */; };
+		994789F31FF0B9770041CC04 /* bird_hills_nature_tree.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789D91FF0B9760041CC04 /* bird_hills_nature_tree.JPG */; };
+		994789F41FF0B9770041CC04 /* barton_nature_leeve.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789DA1FF0B9760041CC04 /* barton_nature_leeve.JPG */; };
+		994789F51FF0B9770041CC04 /* horizontal_strip.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789DB1FF0B9760041CC04 /* horizontal_strip.png */; };
+		994789F61FF0B9770041CC04 /* bird_hills_nature_tree_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789DC1FF0B9770041CC04 /* bird_hills_nature_tree_hd.JPG */; };
+		994789F71FF0B9770041CC04 /* barton_nature_area_bridge_hd.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789DD1FF0B9770041CC04 /* barton_nature_area_bridge_hd.JPG */; };
+		994789F81FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 994789DE1FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg */; };
+		994789F91FF0B9770041CC04 /* huron_river.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789DF1FF0B9770041CC04 /* huron_river.JPG */; };
+		994789FA1FF0B9770041CC04 /* vertical_strip.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789E01FF0B9770041CC04 /* vertical_strip.png */; };
+		99BFDEA81FF03FEB00589553 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFDEA71FF03FEB00589553 /* ReusableView.swift */; };
+		99BFDEAA1FF0409100589553 /* UICollectionViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFDEA91FF0409100589553 /* UICollectionViewEx.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		993936511FEF60D700BF26AB /* ScrollingAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollingAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		993936541FEF60D700BF26AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		993936561FEF60D700BF26AB /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		993936591FEF60D700BF26AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9939365B1FEF60D700BF26AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		993936601FEF60D700BF26AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		993936991FEFF5E000BF26AB /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		993936B31FF002EF00BF26AB /* HDCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDCollectionViewCell.swift; sourceTree = "<group>"; };
+		993936B51FF0033D00BF26AB /* ThumbnailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCollectionViewCell.swift; sourceTree = "<group>"; };
+		993936E21FF00F9300BF26AB /* UIImageEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageEx.swift; sourceTree = "<group>"; };
+		994789C71FF0B9740041CC04 /* bird_hills_nature_sunset_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird_hills_nature_sunset_hd.JPG; sourceTree = "<group>"; };
+		994789C81FF0B9740041CC04 /* barton_nature_lake.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_lake.JPG; sourceTree = "<group>"; };
+		994789C91FF0B9740041CC04 /* vertical_strip_hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vertical_strip_hd.png; sourceTree = "<group>"; };
+		994789CA1FF0B9740041CC04 /* winsor_skyline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winsor_skyline.png; sourceTree = "<group>"; };
+		994789CB1FF0B9740041CC04 /* barton_nature_swan_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_swan_hd.JPG; sourceTree = "<group>"; };
+		994789CC1FF0B9740041CC04 /* bird_hills_nature_foliage_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird_hills_nature_foliage_hd.JPG; sourceTree = "<group>"; };
+		994789CD1FF0B9750041CC04 /* bird_hills_nature_sunset.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird_hills_nature_sunset.JPG; sourceTree = "<group>"; };
+		994789CE1FF0B9750041CC04 /* leslie_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leslie_park.png; sourceTree = "<group>"; };
+		994789CF1FF0B9750041CC04 /* willowtree_apartment_sunset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = willowtree_apartment_sunset.jpg; sourceTree = "<group>"; };
+		994789D01FF0B9750041CC04 /* barton_nature_leeve_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_leeve_hd.JPG; sourceTree = "<group>"; };
+		994789D11FF0B9750041CC04 /* horizontal_strip_hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = horizontal_strip_hd.png; sourceTree = "<group>"; };
+		994789D21FF0B9750041CC04 /* bird_hills_nature_foliage.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird_hills_nature_foliage.JPG; sourceTree = "<group>"; };
+		994789D31FF0B9750041CC04 /* barton_nature_swan.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_swan.JPG; sourceTree = "<group>"; };
+		994789D41FF0B9750041CC04 /* winsor_skyline_hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winsor_skyline_hd.png; sourceTree = "<group>"; };
+		994789D51FF0B9750041CC04 /* huron_river_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = huron_river_hd.JPG; sourceTree = "<group>"; };
+		994789D61FF0B9760041CC04 /* barton_nature_area_bridge.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_area_bridge.JPG; sourceTree = "<group>"; };
+		994789D71FF0B9760041CC04 /* barton_nature_lake_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_lake_hd.JPG; sourceTree = "<group>"; };
+		994789D81FF0B9760041CC04 /* leslie_park_hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leslie_park_hd.png; sourceTree = "<group>"; };
+		994789D91FF0B9760041CC04 /* bird_hills_nature_tree.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird_hills_nature_tree.JPG; sourceTree = "<group>"; };
+		994789DA1FF0B9760041CC04 /* barton_nature_leeve.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_leeve.JPG; sourceTree = "<group>"; };
+		994789DB1FF0B9760041CC04 /* horizontal_strip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = horizontal_strip.png; sourceTree = "<group>"; };
+		994789DC1FF0B9770041CC04 /* bird_hills_nature_tree_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird_hills_nature_tree_hd.JPG; sourceTree = "<group>"; };
+		994789DD1FF0B9770041CC04 /* barton_nature_area_bridge_hd.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barton_nature_area_bridge_hd.JPG; sourceTree = "<group>"; };
+		994789DE1FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = willowtree_apartment_sunset_hd.jpg; sourceTree = "<group>"; };
+		994789DF1FF0B9770041CC04 /* huron_river.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = huron_river.JPG; sourceTree = "<group>"; };
+		994789E01FF0B9770041CC04 /* vertical_strip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vertical_strip.png; sourceTree = "<group>"; };
+		99BFDEA71FF03FEB00589553 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		99BFDEA91FF0409100589553 /* UICollectionViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewEx.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9939364E1FEF60D700BF26AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		993936481FEF60D700BF26AB = {
+			isa = PBXGroup;
+			children = (
+				993936531FEF60D700BF26AB /* ScrollingAlbum */,
+				993936521FEF60D700BF26AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		993936521FEF60D700BF26AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				993936511FEF60D700BF26AB /* ScrollingAlbum.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		993936531FEF60D700BF26AB /* ScrollingAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				993936E11FF00F2000BF26AB /* helper */,
+				9939369D1FEFF9AC00BF26AB /* view */,
+				993936661FEF623200BF26AB /* model */,
+				993936541FEF60D700BF26AB /* AppDelegate.swift */,
+				993936561FEF60D700BF26AB /* AlbumViewController.swift */,
+				9939365B1FEF60D700BF26AB /* Assets.xcassets */,
+				993936601FEF60D700BF26AB /* Info.plist */,
+				993936671FEFF56100BF26AB /* samples */,
+			);
+			path = ScrollingAlbum;
+			sourceTree = "<group>";
+		};
+		993936661FEF623200BF26AB /* model */ = {
+			isa = PBXGroup;
+			children = (
+				993936991FEFF5E000BF26AB /* PhotoModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		993936671FEFF56100BF26AB /* samples */ = {
+			isa = PBXGroup;
+			children = (
+				994789DD1FF0B9770041CC04 /* barton_nature_area_bridge_hd.JPG */,
+				994789D61FF0B9760041CC04 /* barton_nature_area_bridge.JPG */,
+				994789D71FF0B9760041CC04 /* barton_nature_lake_hd.JPG */,
+				994789C81FF0B9740041CC04 /* barton_nature_lake.JPG */,
+				994789D01FF0B9750041CC04 /* barton_nature_leeve_hd.JPG */,
+				994789DA1FF0B9760041CC04 /* barton_nature_leeve.JPG */,
+				994789CB1FF0B9740041CC04 /* barton_nature_swan_hd.JPG */,
+				994789D31FF0B9750041CC04 /* barton_nature_swan.JPG */,
+				994789CC1FF0B9740041CC04 /* bird_hills_nature_foliage_hd.JPG */,
+				994789D21FF0B9750041CC04 /* bird_hills_nature_foliage.JPG */,
+				994789C71FF0B9740041CC04 /* bird_hills_nature_sunset_hd.JPG */,
+				994789CD1FF0B9750041CC04 /* bird_hills_nature_sunset.JPG */,
+				994789DC1FF0B9770041CC04 /* bird_hills_nature_tree_hd.JPG */,
+				994789D91FF0B9760041CC04 /* bird_hills_nature_tree.JPG */,
+				994789D11FF0B9750041CC04 /* horizontal_strip_hd.png */,
+				994789DB1FF0B9760041CC04 /* horizontal_strip.png */,
+				994789D51FF0B9750041CC04 /* huron_river_hd.JPG */,
+				994789DF1FF0B9770041CC04 /* huron_river.JPG */,
+				994789D81FF0B9760041CC04 /* leslie_park_hd.png */,
+				994789CE1FF0B9750041CC04 /* leslie_park.png */,
+				994789C91FF0B9740041CC04 /* vertical_strip_hd.png */,
+				994789E01FF0B9770041CC04 /* vertical_strip.png */,
+				994789DE1FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg */,
+				994789CF1FF0B9750041CC04 /* willowtree_apartment_sunset.jpg */,
+				994789D41FF0B9750041CC04 /* winsor_skyline_hd.png */,
+				994789CA1FF0B9740041CC04 /* winsor_skyline.png */,
+			);
+			path = samples;
+			sourceTree = "<group>";
+		};
+		9939369D1FEFF9AC00BF26AB /* view */ = {
+			isa = PBXGroup;
+			children = (
+				993936B21FF002B800BF26AB /* cell */,
+				993936581FEF60D700BF26AB /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		993936B21FF002B800BF26AB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				993936B31FF002EF00BF26AB /* HDCollectionViewCell.swift */,
+				993936B51FF0033D00BF26AB /* ThumbnailCollectionViewCell.swift */,
+				99BFDEA71FF03FEB00589553 /* ReusableView.swift */,
+				99BFDEA91FF0409100589553 /* UICollectionViewEx.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		993936E11FF00F2000BF26AB /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				993936E21FF00F9300BF26AB /* UIImageEx.swift */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		993936501FEF60D700BF26AB /* ScrollingAlbum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 993936631FEF60D700BF26AB /* Build configuration list for PBXNativeTarget "ScrollingAlbum" */;
+			buildPhases = (
+				9939364D1FEF60D700BF26AB /* Sources */,
+				9939364E1FEF60D700BF26AB /* Frameworks */,
+				9939364F1FEF60D700BF26AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScrollingAlbum;
+			productName = ScrollingAlbum;
+			productReference = 993936511FEF60D700BF26AB /* ScrollingAlbum.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		993936491FEF60D700BF26AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = RippleArc;
+				TargetAttributes = {
+					993936501FEF60D700BF26AB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9939364C1FEF60D700BF26AB /* Build configuration list for PBXProject "ScrollingAlbum" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 993936481FEF60D700BF26AB;
+			productRefGroup = 993936521FEF60D700BF26AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				993936501FEF60D700BF26AB /* ScrollingAlbum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9939364F1FEF60D700BF26AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				994789EB1FF0B9770041CC04 /* horizontal_strip_hd.png in Resources */,
+				994789ED1FF0B9770041CC04 /* barton_nature_swan.JPG in Resources */,
+				994789E51FF0B9770041CC04 /* barton_nature_swan_hd.JPG in Resources */,
+				994789F21FF0B9770041CC04 /* leslie_park_hd.png in Resources */,
+				994789FA1FF0B9770041CC04 /* vertical_strip.png in Resources */,
+				994789EF1FF0B9770041CC04 /* huron_river_hd.JPG in Resources */,
+				994789F11FF0B9770041CC04 /* barton_nature_lake_hd.JPG in Resources */,
+				994789EE1FF0B9770041CC04 /* winsor_skyline_hd.png in Resources */,
+				994789F71FF0B9770041CC04 /* barton_nature_area_bridge_hd.JPG in Resources */,
+				9939365C1FEF60D700BF26AB /* Assets.xcassets in Resources */,
+				994789F91FF0B9770041CC04 /* huron_river.JPG in Resources */,
+				994789F61FF0B9770041CC04 /* bird_hills_nature_tree_hd.JPG in Resources */,
+				994789F51FF0B9770041CC04 /* horizontal_strip.png in Resources */,
+				994789F01FF0B9770041CC04 /* barton_nature_area_bridge.JPG in Resources */,
+				994789E21FF0B9770041CC04 /* barton_nature_lake.JPG in Resources */,
+				994789E91FF0B9770041CC04 /* willowtree_apartment_sunset.jpg in Resources */,
+				994789EA1FF0B9770041CC04 /* barton_nature_leeve_hd.JPG in Resources */,
+				994789E31FF0B9770041CC04 /* vertical_strip_hd.png in Resources */,
+				994789E61FF0B9770041CC04 /* bird_hills_nature_foliage_hd.JPG in Resources */,
+				994789F41FF0B9770041CC04 /* barton_nature_leeve.JPG in Resources */,
+				994789E41FF0B9770041CC04 /* winsor_skyline.png in Resources */,
+				994789E71FF0B9770041CC04 /* bird_hills_nature_sunset.JPG in Resources */,
+				994789F81FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg in Resources */,
+				994789E81FF0B9770041CC04 /* leslie_park.png in Resources */,
+				994789E11FF0B9770041CC04 /* bird_hills_nature_sunset_hd.JPG in Resources */,
+				994789EC1FF0B9770041CC04 /* bird_hills_nature_foliage.JPG in Resources */,
+				9939365A1FEF60D700BF26AB /* Main.storyboard in Resources */,
+				994789F31FF0B9770041CC04 /* bird_hills_nature_tree.JPG in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9939364D1FEF60D700BF26AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9939369B1FEFF5E000BF26AB /* PhotoModel.swift in Sources */,
+				993936571FEF60D700BF26AB /* AlbumViewController.swift in Sources */,
+				993936551FEF60D700BF26AB /* AppDelegate.swift in Sources */,
+				993936B41FF002EF00BF26AB /* HDCollectionViewCell.swift in Sources */,
+				993936B61FF0033D00BF26AB /* ThumbnailCollectionViewCell.swift in Sources */,
+				99BFDEAA1FF0409100589553 /* UICollectionViewEx.swift in Sources */,
+				99BFDEA81FF03FEB00589553 /* ReusableView.swift in Sources */,
+				993936E31FF00F9300BF26AB /* UIImageEx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		993936581FEF60D700BF26AB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				993936591FEF60D700BF26AB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		993936611FEF60D700BF26AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		993936621FEF60D700BF26AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		993936641FEF60D700BF26AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GGKT557D86;
+				INFOPLIST_FILE = ScrollingAlbum/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RippleArc.ScrollingAlbum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		993936651FEF60D700BF26AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GGKT557D86;
+				INFOPLIST_FILE = ScrollingAlbum/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RippleArc.ScrollingAlbum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9939364C1FEF60D700BF26AB /* Build configuration list for PBXProject "ScrollingAlbum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				993936611FEF60D700BF26AB /* Debug */,
+				993936621FEF60D700BF26AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		993936631FEF60D700BF26AB /* Build configuration list for PBXNativeTarget "ScrollingAlbum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				993936641FEF60D700BF26AB /* Debug */,
+				993936651FEF60D700BF26AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 993936491FEF60D700BF26AB /* Project object */;
+}
