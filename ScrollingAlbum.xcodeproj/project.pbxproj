@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		992CCAE91FFB3E42008B9066 /* FlowLayoutInvalidateBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992CCAE81FFB3E42008B9066 /* FlowLayoutInvalidateBehavior.swift */; };
 		993936551FEF60D700BF26AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936541FEF60D700BF26AB /* AppDelegate.swift */; };
 		993936571FEF60D700BF26AB /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993936561FEF60D700BF26AB /* AlbumViewController.swift */; };
 		9939365A1FEF60D700BF26AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 993936581FEF60D700BF26AB /* Main.storyboard */; };
@@ -41,11 +42,14 @@
 		994789F81FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 994789DE1FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg */; };
 		994789F91FF0B9770041CC04 /* huron_river.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 994789DF1FF0B9770041CC04 /* huron_river.JPG */; };
 		994789FA1FF0B9770041CC04 /* vertical_strip.png in Resources */ = {isa = PBXBuildFile; fileRef = 994789E01FF0B9770041CC04 /* vertical_strip.png */; };
+		994789FF1FF1437E0041CC04 /* HDFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994789FE1FF1437E0041CC04 /* HDFlowLayout.swift */; };
+		99478A011FF14EBA0041CC04 /* CellConfiguratedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99478A001FF14EBA0041CC04 /* CellConfiguratedCollectionView.swift */; };
 		99BFDEA81FF03FEB00589553 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFDEA71FF03FEB00589553 /* ReusableView.swift */; };
 		99BFDEAA1FF0409100589553 /* UICollectionViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFDEA91FF0409100589553 /* UICollectionViewEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		992CCAE81FFB3E42008B9066 /* FlowLayoutInvalidateBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutInvalidateBehavior.swift; sourceTree = "<group>"; };
 		993936511FEF60D700BF26AB /* ScrollingAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollingAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		993936541FEF60D700BF26AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		993936561FEF60D700BF26AB /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		994789DE1FF0B9770041CC04 /* willowtree_apartment_sunset_hd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = willowtree_apartment_sunset_hd.jpg; sourceTree = "<group>"; };
 		994789DF1FF0B9770041CC04 /* huron_river.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = huron_river.JPG; sourceTree = "<group>"; };
 		994789E01FF0B9770041CC04 /* vertical_strip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vertical_strip.png; sourceTree = "<group>"; };
+		994789FE1FF1437E0041CC04 /* HDFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDFlowLayout.swift; sourceTree = "<group>"; };
+		99478A001FF14EBA0041CC04 /* CellConfiguratedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfiguratedCollectionView.swift; sourceTree = "<group>"; };
 		99BFDEA71FF03FEB00589553 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		99BFDEA91FF0409100589553 /* UICollectionViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewEx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +122,7 @@
 		993936531FEF60D700BF26AB /* ScrollingAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				994789FB1FF142D80041CC04 /* FlowLayout */,
 				993936E11FF00F2000BF26AB /* helper */,
 				9939369D1FEFF9AC00BF26AB /* view */,
 				993936661FEF623200BF26AB /* model */,
@@ -174,6 +181,7 @@
 			children = (
 				993936B21FF002B800BF26AB /* cell */,
 				993936581FEF60D700BF26AB /* Main.storyboard */,
+				99478A001FF14EBA0041CC04 /* CellConfiguratedCollectionView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -195,6 +203,23 @@
 				993936E21FF00F9300BF26AB /* UIImageEx.swift */,
 			);
 			path = helper;
+			sourceTree = "<group>";
+		};
+		994789FB1FF142D80041CC04 /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				994789FD1FF143440041CC04 /* Layout */,
+				992CCAE81FFB3E42008B9066 /* FlowLayoutInvalidateBehavior.swift */,
+			);
+			path = FlowLayout;
+			sourceTree = "<group>";
+		};
+		994789FD1FF143440041CC04 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				994789FE1FF1437E0041CC04 /* HDFlowLayout.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,9 +322,12 @@
 				9939369B1FEFF5E000BF26AB /* PhotoModel.swift in Sources */,
 				993936571FEF60D700BF26AB /* AlbumViewController.swift in Sources */,
 				993936551FEF60D700BF26AB /* AppDelegate.swift in Sources */,
+				99478A011FF14EBA0041CC04 /* CellConfiguratedCollectionView.swift in Sources */,
 				993936B41FF002EF00BF26AB /* HDCollectionViewCell.swift in Sources */,
 				993936B61FF0033D00BF26AB /* ThumbnailCollectionViewCell.swift in Sources */,
 				99BFDEAA1FF0409100589553 /* UICollectionViewEx.swift in Sources */,
+				992CCAE91FFB3E42008B9066 /* FlowLayoutInvalidateBehavior.swift in Sources */,
+				994789FF1FF1437E0041CC04 /* HDFlowLayout.swift in Sources */,
 				99BFDEA81FF03FEB00589553 /* ReusableView.swift in Sources */,
 				993936E31FF00F9300BF26AB /* UIImageEx.swift in Sources */,
 			);
