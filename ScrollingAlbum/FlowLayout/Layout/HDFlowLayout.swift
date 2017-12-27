@@ -8,59 +8,22 @@
 
 import UIKit
 
-class HDFlowLayout: UICollectionViewFlowLayout {
-    var cellFullWidth: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellMaximumWidth
-    }
-    
-    var cellFullSpacing: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellFullSpacing
-    }
-    
-    var cellNormalWidth: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellNormalWidth
-    }
-    
-    var cellNormalSpacing: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellNormalSpacing
-    }
-    
-    var cellNormalWidthAndSpacing: CGFloat {
-        return cellNormalWidth + cellNormalSpacing
-    }
-    
-    var cellNormalSize: CGSize {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return CGSize.zero }
-        return CGSize(width:collectionView.cellNormalWidth, height:collectionView.cellHeight)
-    }
-    
-    var cellHeight: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellHeight
-    }
-    
-    var cellCount: Int {
-        return collectionView!.dataSource!.collectionView(collectionView!, numberOfItemsInSection: 0)
-    }
+class HDFlowLayout: UICollectionViewFlowLayout, CellBasicMeasurement {
     
     fileprivate func cellIndex(at offset: CGFloat) -> Int {
-        return Int(offset / cellFullWidth)
+        return Int(offset / cellMaximumWidth)
     }
     
     fileprivate var currentOffset: CGFloat {
         return (collectionView!.contentOffset.x + collectionView!.contentInset.left)
     }
     
-    fileprivate var currentCellIndex: Int {
-        return Int(currentOffset / cellFullWidth)
+    var currentCellIndex: Int {
+        return min(cellCount - 1, Int(currentOffset / cellMaximumWidth))
     }
     
     fileprivate var currentFractionComplete: CGFloat {
-        let relativeOffset = currentOffset / cellFullWidth
+        let relativeOffset = currentOffset / cellMaximumWidth
         return modf(relativeOffset).1
     }
     
@@ -82,15 +45,15 @@ extension HDFlowLayout {
         for itemIndex in 0 ..< cellCount {
             var cellCenter: CGPoint = CGPoint(x: 0, y: 0)
             cellCenter.y = collectionView!.frame.size.height / 2.0
-            cellCenter.x = cellFullWidth * CGFloat(itemIndex) + cellFullWidth  / 2.0
+            cellCenter.x = cellMaximumWidth * CGFloat(itemIndex) + cellMaximumWidth  / 2.0
             cellEstimatedCenterPoints.append(cellCenter)
-            cellEstimatedFrames.append(CGRect.init(origin: CGPoint.init(x: cellFullWidth * CGFloat(itemIndex), y: 0), size: CGSize.init(width: cellFullWidth, height: cellHeight)))
+            cellEstimatedFrames.append(CGRect.init(origin: CGPoint.init(x: cellMaximumWidth * CGFloat(itemIndex), y: 0), size: CGSize.init(width: cellMaximumWidth, height: cellHeight)))
         }
         shouldLayoutEverything = false
     }
     
     override var collectionViewContentSize: CGSize {
-        let contentWidth = cellFullWidth * CGFloat(cellCount)
+        let contentWidth = cellMaximumWidth * CGFloat(cellCount)
         let contentHeight = cellHeight
         return CGSize(width: contentWidth, height: contentHeight)
     }
@@ -100,7 +63,7 @@ extension HDFlowLayout {
             return nil
         }
         
-        let relativeOffset = currentOffset / cellFullWidth
+        let relativeOffset = currentOffset / cellMaximumWidth
         let fractionComplete = max(0, modf(relativeOffset).1)
         switch indexPath.item {
         case currentCellIndex:
@@ -118,7 +81,7 @@ extension HDFlowLayout {
                 attributes.center = cellEstimatedCenterPoints[indexPath.row]
             }
         default:
-            attributes.size = CGSize(width: cellFullWidth, height: cellHeight)
+            attributes.size = CGSize(width: cellMaximumWidth, height: cellHeight)
             attributes.center = cellEstimatedCenterPoints[indexPath.row]
         }
         return attributes

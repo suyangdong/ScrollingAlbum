@@ -15,15 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = window!.rootViewController as! UINavigationController
+
         let albumViewController =
-            rootViewController.topViewController as! AlbumViewController
+           window!.rootViewController as! AlbumViewController
         
         // dependency inject the models
-        albumViewController.hdPhotoModel = PhotoCollection(photos: ["barton_nature_leeve_hd.JPG", "barton_nature_area_bridge_hd.JPG", "barton_nature_lake_hd.JPG", "barton_nature_swan_hd.JPG", "bird_hills_nature_tree_hd.JPG", "bird_hills_nature_sunset_hd.JPG", "huron_river_hd.JPG", "bird_hills_nature_foliage_hd.JPG","leslie_park_hd.png", "willowtree_apartment_sunset_hd.jpg", "vertical_strip_hd.png", "winsor_skyline_hd.png"])
+        albumViewController.hdPhotoModel = PhotoCollection(photos: [ "barton_nature_area_bridge_hd.JPG", "barton_nature_lake_hd.JPG", "barton_nature_swan_hd.JPG", "bird_hills_nature_tree_hd.JPG", "bird_hills_nature_sunset_hd.JPG", "huron_river_hd.JPG", "bird_hills_nature_foliage_hd.JPG","leslie_park_hd.png", "willowtree_apartment_sunset_hd.jpg", "vertical_strip_hd.png", "winsor_skyline_hd.png","barton_nature_leeve_hd.JPG"])
         
-        albumViewController.thumbnailPhotoModel = PhotoCollection(photos: ["barton_nature_leeve.JPG", "barton_nature_area_bridge.JPG", "barton_nature_lake.JPG", "barton_nature_swan.JPG", "bird_hills_nature_tree.JPG", "bird_hills_nature_sunset.JPG", "huron_river.JPG", "bird_hills_nature_foliage.JPG","leslie_park", "willowtree_apartment_sunset.jpg", "vertical_strip.png",  "winsor_skyline.png"])
-        
+        albumViewController.thumbnailPhotoModel = PhotoCollection(photos: [ "barton_nature_area_bridge.JPG", "barton_nature_lake.JPG", "barton_nature_swan.JPG", "bird_hills_nature_tree.JPG", "bird_hills_nature_sunset.JPG", "huron_river.JPG", "bird_hills_nature_foliage.JPG","leslie_park", "willowtree_apartment_sunset.jpg", "vertical_strip.png",  "winsor_skyline.png", "barton_nature_leeve.JPG"
+            ])
+        albumViewController.hdFlowLayout = HDFlowLayout()
+        albumViewController.thumbnailMasterFlowLayout = ThumbnailMasterFlowLayout()
+        albumViewController.thumbnailMasterFlowLayout.accordionAnimationManager = AcoordionAnimationManager()
         albumViewController.debug = false
         return true
     }

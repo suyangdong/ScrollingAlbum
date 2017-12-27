@@ -15,31 +15,35 @@ class AlbumViewController: UIViewController {
     // dependency injection
     var hdPhotoModel: PhotoModel!
     var thumbnailPhotoModel: PhotoModel!
+    var hdFlowLayout: HDFlowLayout!
+    var thumbnailMasterFlowLayout: ThumbnailMasterFlowLayout!
+    
     var hdCollectionViewRatio: CGFloat = 0
+    var thumbnailCollectionViewThinnestRatio: CGFloat = 0
+    var thumbnailCollectionViewThickestRatio: CGFloat = 0
+    let thumbnailMaximumWidth:CGFloat = 160
     
     @IBOutlet weak var hdCollectionView: CellConfiguratedCollectionView!
-    @IBOutlet weak var thumbnailCollectionView: UICollectionView!
+    @IBOutlet weak var thumbnailCollectionView: CellConfiguratedCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         assistantMiddleLine.isHidden = !debug
         
-        thumbnailCollectionView.dataSource = self
         setupHDCollectionView()
+        setupThumbnailCollectionView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
+            layout.unfoldCurrentCell()
+        }
     }
     
     override func viewDidLayoutSubviews() {
-        // set up the basic attributes such as itemSize and spacing.
-        //        if let layout = hdCollectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
-        //            layout.itemSize = hdCollectionView.frame.size
-        //            layout.minimumLineSpacing = 0
-        //        }
         setupHDCollectionViewFlowLayout()
         hdCollectionView.collectionViewLayout.invalidateLayout()
-        
-        if let layout = thumbnailCollectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: 30, height: 48)
-            layout.minimumLineSpacing = 2
-        }
+        setupThumbnailCollectionViewFlowLayout()
+        thumbnailCollectionView.collectionViewLayout.invalidateLayout()
     }
     
     fileprivate func setupHDCollectionView() {
@@ -47,6 +51,16 @@ class AlbumViewController: UIViewController {
         hdCollectionView.dataSource = self
         hdCollectionView!.isPagingEnabled = true
         hdCollectionView!.decelerationRate = UIScrollViewDecelerationRateNormal;
+        hdCollectionView!.collectionViewLayout = hdFlowLayout
+    }
+    
+    fileprivate func setupThumbnailCollectionView() {
+        thumbnailCollectionView!.dataSource = self
+        thumbnailCollectionView!.delegate = self
+        thumbnailCollectionView!.cellSize = self
+        thumbnailCollectionView!.alwaysBounceHorizontal = true
+        thumbnailCollectionView!.collectionViewLayout = thumbnailMasterFlowLayout
+        
     }
     
     fileprivate func setupHDCollectionViewFlowLayout() {
@@ -57,6 +71,19 @@ class AlbumViewController: UIViewController {
         hdCollectionView.cellHeight = hdCollectionView.bounds.size.height
         hdCollectionViewRatio = hdCollectionView.frame.size.height / hdCollectionView.frame.size.width
         if let layout = hdCollectionView.collectionViewLayout as? HDFlowLayout {
+            layout.shouldLayoutEverything = true
+        }
+    }
+    
+    fileprivate func setupThumbnailCollectionViewFlowLayout() {
+        thumbnailCollectionView.cellNormalWidth = 30
+        thumbnailCollectionView.cellFullSpacing = 15
+        thumbnailCollectionView.cellNormalSpacing = 2
+        thumbnailCollectionView.cellHeight = thumbnailCollectionView.frame.size.height
+        thumbnailCollectionView.cellMaximumWidth = thumbnailMaximumWidth
+        thumbnailCollectionViewThinnestRatio = thumbnailCollectionView.cellHeight / thumbnailCollectionView.cellNormalWidth
+        thumbnailCollectionViewThickestRatio = thumbnailCollectionView.cellHeight / thumbnailMaximumWidth
+        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailMasterFlowLayout {
             layout.shouldLayoutEverything = true
         }
     }
@@ -82,27 +109,55 @@ extension AlbumViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
-        case
-        thumbnailCollectionView:
+        case thumbnailCollectionView:
             let cell = collectionView.dequeueReusableCell(for: indexPath) as ThumbnailCollectionViewCell
-            if let image = thumbnailPhotoModel.photo(at: indexPath.row, debug:debug) {
-                cell.photoViewWidthConstraint.constant = 64
+            if let image = thumbnailPhotoModel.photo(at: indexPath.row, debug:debug),
+                let size = self.collectionView(thumbnailCollectionView, sizeForItemAt: indexPath) {
+                cell.photoViewWidthConstraint.constant = size.width
+                cell.clipsToBounds = true
+                cell.photoView?.contentMode = .scaleAspectFill
                 cell.photoView?.image = image
             }
             
             return cell
         case hdCollectionView:
             let cell = collectionView.dequeueReusableCell(for: indexPath) as HDCollectionViewCell
-            if let image = hdPhotoModel.photo(at: indexPath.item, debug:debug) {
-                cell.photoViewWidthConstraint.constant = hdCollectionView.bounds.size.width
-                cell.photoViewHeightConstraint.constant = hdCollectionView.bounds.size.height
+            if let image = hdPhotoModel.photo(at: indexPath.item, debug:debug),
+                let size = self.collectionView(hdCollectionView, sizeForItemAt: indexPath)  {
+                cell.photoViewWidthConstraint.constant = size.width
+                cell.photoViewHeightConstraint.constant = size.height
                 cell.clipsToBounds = true
+                cell.photoView?.contentMode = .scaleAspectFill
                 cell.photoView?.image = image
             }
             
             return cell
         default:
             return UICollectionViewCell()
+        }
+    }
+}
+
+//MARK：- CollectionView Delegate
+extension AlbumViewController: UICollectionViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if let collectionView = scrollView as? UICollectionView,
+            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
+            layout.foldCurrentCell()
+        }
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let collectionView = scrollView as? UICollectionView,
+            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
+            layout.unfoldCurrentCell()
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate,
+            let collectionView = scrollView as? UICollectionView,
+            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
+            layout.unfoldCurrentCell()
         }
     }
 }
@@ -114,6 +169,10 @@ extension AlbumViewController: CollectionViewCellSize {
         case hdCollectionView:
             if let size = hdPhotoModel.photoSize(at: indexPath.row) {
                 return cellSize(forHDImage: size)
+            }
+        case thumbnailCollectionView:
+            if let size = thumbnailPhotoModel.photoSize(at: indexPath.row) {
+                return cellSize(forThumbImage: size)
             }
         default:
             return nil
@@ -127,6 +186,17 @@ extension AlbumViewController: CollectionViewCellSize {
             return CGSize(width: hdCollectionView.frame.size.width, height: hdCollectionView.frame.size.width * ratio)
         } else {
             return CGSize(width: hdCollectionView.frame.size.height / ratio, height: hdCollectionView.frame.size.height)
+        }
+    }
+    
+    fileprivate func cellSize(forThumbImage size: CGSize) -> CGSize? {
+        let ratio = size.height / size.width
+        if (ratio > thumbnailCollectionViewThinnestRatio) {
+            return CGSize(width: thumbnailCollectionView.cellNormalWidth, height: thumbnailCollectionView.cellHeight)
+        } else if ratio < thumbnailCollectionViewThickestRatio {
+            return CGSize(width: thumbnailCollectionView.cellMaximumWidth, height: thumbnailCollectionView.cellHeight)
+        } else {
+            return CGSize(width: thumbnailCollectionView.frame.size.height / ratio, height: thumbnailCollectionView.frame.size.height)
         }
     }
 }
