@@ -47,6 +47,10 @@
 		99478A051FF19CBC0041CC04 /* ThumbnailMasterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99478A041FF19CBC0041CC04 /* ThumbnailMasterFlowLayout.swift */; };
 		99478A091FF19DBA0041CC04 /* AcoordionAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99478A081FF19DBA0041CC04 /* AcoordionAnimationManager.swift */; };
 		99478A0B1FF1D22C0041CC04 /* CellAnimationMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99478A0A1FF1D22C0041CC04 /* CellAnimationMeasurement.swift */; };
+		994DEAA01FF5EDB7007BA7B2 /* FlowLayoutSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DEA9F1FF5EDB7007BA7B2 /* FlowLayoutSyncManager.swift */; };
+		994DEAA21FF6B11E007BA7B2 /* CellPassiveMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DEAA11FF6B11E007BA7B2 /* CellPassiveMeasurement.swift */; };
+		994DEAA41FF6C746007BA7B2 /* ThumbnailSlaveFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DEAA31FF6C746007BA7B2 /* ThumbnailSlaveFlowLayout.swift */; };
+		994DEAA61FF7E50E007BA7B2 /* FlowLayoutInvalidateBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DEAA51FF7E50E007BA7B2 /* FlowLayoutInvalidateBehavior.swift */; };
 		9969E09A1FF1F404000D5D1E /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9969E0991FF1F404000D5D1E /* ThumbnailFlowLayoutDraggingBehavior.swift */; };
 		99BFDEA81FF03FEB00589553 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFDEA71FF03FEB00589553 /* ReusableView.swift */; };
 		99BFDEAA1FF0409100589553 /* UICollectionViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFDEA91FF0409100589553 /* UICollectionViewEx.swift */; };
@@ -95,6 +99,10 @@
 		99478A041FF19CBC0041CC04 /* ThumbnailMasterFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailMasterFlowLayout.swift; sourceTree = "<group>"; };
 		99478A081FF19DBA0041CC04 /* AcoordionAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcoordionAnimationManager.swift; sourceTree = "<group>"; };
 		99478A0A1FF1D22C0041CC04 /* CellAnimationMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAnimationMeasurement.swift; sourceTree = "<group>"; };
+		994DEA9F1FF5EDB7007BA7B2 /* FlowLayoutSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutSyncManager.swift; sourceTree = "<group>"; };
+		994DEAA11FF6B11E007BA7B2 /* CellPassiveMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPassiveMeasurement.swift; sourceTree = "<group>"; };
+		994DEAA31FF6C746007BA7B2 /* ThumbnailSlaveFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailSlaveFlowLayout.swift; sourceTree = "<group>"; };
+		994DEAA51FF7E50E007BA7B2 /* FlowLayoutInvalidateBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutInvalidateBehavior.swift; sourceTree = "<group>"; };
 		9969E0991FF1F404000D5D1E /* ThumbnailFlowLayoutDraggingBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailFlowLayoutDraggingBehavior.swift; sourceTree = "<group>"; };
 		99BFDEA71FF03FEB00589553 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		99BFDEA91FF0409100589553 /* UICollectionViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewEx.swift; sourceTree = "<group>"; };
@@ -216,9 +224,11 @@
 		994789FB1FF142D80041CC04 /* FlowLayout */ = {
 			isa = PBXGroup;
 			children = (
+				994DEAA51FF7E50E007BA7B2 /* FlowLayoutInvalidateBehavior.swift */,
 				9969E0991FF1F404000D5D1E /* ThumbnailFlowLayoutDraggingBehavior.swift */,
 				99478A021FF1718A0041CC04 /* CellBasicMeasurement.swift */,
 				99478A0A1FF1D22C0041CC04 /* CellAnimationMeasurement.swift */,
+				994DEAA11FF6B11E007BA7B2 /* CellPassiveMeasurement.swift */,
 				99478A061FF19D4B0041CC04 /* Manager */,
 				994789FD1FF143440041CC04 /* Layout */,
 			);
@@ -230,6 +240,7 @@
 			children = (
 				994789FE1FF1437E0041CC04 /* HDFlowLayout.swift */,
 				99478A041FF19CBC0041CC04 /* ThumbnailMasterFlowLayout.swift */,
+				994DEAA31FF6C746007BA7B2 /* ThumbnailSlaveFlowLayout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -238,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				99478A081FF19DBA0041CC04 /* AcoordionAnimationManager.swift */,
+				994DEA9F1FF5EDB7007BA7B2 /* FlowLayoutSyncManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -343,6 +355,8 @@
 				99478A091FF19DBA0041CC04 /* AcoordionAnimationManager.swift in Sources */,
 				9939369B1FEFF5E000BF26AB /* PhotoModel.swift in Sources */,
 				993936571FEF60D700BF26AB /* AlbumViewController.swift in Sources */,
+				994DEAA41FF6C746007BA7B2 /* ThumbnailSlaveFlowLayout.swift in Sources */,
+				994DEAA61FF7E50E007BA7B2 /* FlowLayoutInvalidateBehavior.swift in Sources */,
 				993936551FEF60D700BF26AB /* AppDelegate.swift in Sources */,
 				99478A051FF19CBC0041CC04 /* ThumbnailMasterFlowLayout.swift in Sources */,
 				99478A011FF14EBA0041CC04 /* CellConfiguratedCollectionView.swift in Sources */,
@@ -350,7 +364,9 @@
 				993936B41FF002EF00BF26AB /* HDCollectionViewCell.swift in Sources */,
 				993936B61FF0033D00BF26AB /* ThumbnailCollectionViewCell.swift in Sources */,
 				99BFDEAA1FF0409100589553 /* UICollectionViewEx.swift in Sources */,
+				994DEAA21FF6B11E007BA7B2 /* CellPassiveMeasurement.swift in Sources */,
 				9969E09A1FF1F404000D5D1E /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */,
+				994DEAA01FF5EDB7007BA7B2 /* FlowLayoutSyncManager.swift in Sources */,
 				994789FF1FF1437E0041CC04 /* HDFlowLayout.swift in Sources */,
 				99BFDEA81FF03FEB00589553 /* ReusableView.swift in Sources */,
 				993936E31FF00F9300BF26AB /* UIImageEx.swift in Sources */,

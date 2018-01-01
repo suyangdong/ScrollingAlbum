@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias timerHandler = (Timer)  -> Void
+typealias timerHandler = (Timer)  -> Void
 
 protocol AccordionAnimation {
     mutating func startAnimation(_ collectionView: UICollectionView, animationType: AnimatedCellType, cellLength: CGFloat, onProgress: @escaping timerHandler)
@@ -77,7 +77,9 @@ extension AcoordionAnimationManager {
     }
     
     fileprivate func unfoldingAnimationProgress(_ currentTime: TimeInterval) -> CGFloat {
-        if  currentTime >= animationStartTime + animationDuration {
+        if  animationStartTime == 0 {
+            return 0
+        } else if currentTime >= animationStartTime + animationDuration {
             endTimer()
             return 1
         } else {
@@ -86,7 +88,9 @@ extension AcoordionAnimationManager {
     }
     
     fileprivate func foldingAnimationProgress(_ currentTime: TimeInterval) -> CGFloat {
-        if  currentTime >= animationStartTime + animationDuration {
+        if  animationStartTime == 0 {
+            return 1
+        } else if currentTime >= animationStartTime + animationDuration {
             endTimer()
             return 0
         } else {
