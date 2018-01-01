@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HDFlowLayout: UICollectionViewFlowLayout, CellBasicMeasurement {
+class HDFlowLayout: UICollectionViewFlowLayout, CellBasicMeasurement, FlowLayoutInvalidateBehavior {
     
     fileprivate func cellIndex(at offset: CGFloat) -> Int {
         return Int(offset / cellMaximumWidth)
@@ -32,6 +32,9 @@ class HDFlowLayout: UICollectionViewFlowLayout, CellBasicMeasurement {
     fileprivate var cellEstimatedFrames: [CGRect] = []
     var shouldLayoutEverything = true
     let minimumPhotoWidth: CGFloat = 40
+    
+    // MARK: - Injection
+    var flowLayoutSyncManager: FlowLayoutSync!
 }
 
 
@@ -63,32 +66,28 @@ extension HDFlowLayout {
             return nil
         }
         
-        let relativeOffset = currentOffset / cellMaximumWidth
-        let fractionComplete = max(0, modf(relativeOffset).1)
-        switch indexPath.item {
-        case currentCellIndex:
-            if let collectionView = collectionView as? CellConfiguratedCollectionView,
-                let cellSize = collectionView.cellSize(for: indexPath) {
+        if let collectionView = collectionView as? CellConfiguratedCollectionView,
+            let cellSize = collectionView.cellSize(for: indexPath) {
+            switch indexPath.item {
+            case currentCellIndex:
+                attributes.size = CGSize(width: max(minimumPhotoWidth, cellSize.width - cellFullSpacing * currentFractionComplete), height: cellSize.height)
                 
-                attributes.size = CGSize(width: max(minimumPhotoWidth, cellSize.width - cellFullSpacing * fractionComplete), height: cellSize.height)
-                attributes.center = cellEstimatedCenterPoints[indexPath.row]
-            }
-        case currentCellIndex + 1:
-            if let collectionView = collectionView as? CellConfiguratedCollectionView,
-                let cellSize = collectionView.cellSize(for: indexPath) {
+            case currentCellIndex + 1:
+                attributes.size = CGSize(width: max(minimumPhotoWidth, cellSize.width - cellFullSpacing * (1-currentFractionComplete)), height: cellSize.height)
                 
-                attributes.size = CGSize(width: max(minimumPhotoWidth, cellSize.width - cellFullSpacing * (1-fractionComplete)), height: cellSize.height)
-                attributes.center = cellEstimatedCenterPoints[indexPath.row]
+            default:
+                attributes.size = CGSize(width: cellMaximumWidth, height: cellHeight)
             }
-        default:
-            attributes.size = CGSize(width: cellMaximumWidth, height: cellHeight)
             attributes.center = cellEstimatedCenterPoints[indexPath.row]
         }
+        
         return attributes
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
+        flowLayoutSyncManager.didMove(collectionView!, to: IndexPath(item:currentCellIndex, section:0), with: currentFractionComplete)
+
         var allAttributes: [UICollectionViewLayoutAttributes] = []
         for itemIndex in 0 ..< cellCount {
             if rect.intersects(cellEstimatedFrames[itemIndex]) {

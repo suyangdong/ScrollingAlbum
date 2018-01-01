@@ -12,11 +12,11 @@ class AlbumViewController: UIViewController {
     // if enabled, will show a middle vertical line for debugging and indices of the photos
     var debug: Bool = false
     @IBOutlet weak var assistantMiddleLine: UIView!
+    
     // dependency injection
     var hdPhotoModel: PhotoModel!
     var thumbnailPhotoModel: PhotoModel!
-    var hdFlowLayout: HDFlowLayout!
-    var thumbnailMasterFlowLayout: ThumbnailMasterFlowLayout!
+    var flowLayoutSyncManager: FlowLayoutSyncManager!
     
     var hdCollectionViewRatio: CGFloat = 0
     var thumbnailCollectionViewThinnestRatio: CGFloat = 0
@@ -31,6 +31,8 @@ class AlbumViewController: UIViewController {
         
         setupHDCollectionView()
         setupThumbnailCollectionView()
+        flowLayoutSyncManager.register(hdCollectionView)
+        flowLayoutSyncManager.register(thumbnailCollectionView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,18 +42,21 @@ class AlbumViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        setupHDCollectionViewFlowLayout()
+        setupHDCollectionViewMeasurement()
         hdCollectionView.collectionViewLayout.invalidateLayout()
-        setupThumbnailCollectionViewFlowLayout()
+        setupThumbnailCollectionViewMeasurement()
         thumbnailCollectionView.collectionViewLayout.invalidateLayout()
     }
     
     fileprivate func setupHDCollectionView() {
         hdCollectionView!.cellSize = self
         hdCollectionView.dataSource = self
+        hdCollectionView.delegate = self
         hdCollectionView!.isPagingEnabled = true
         hdCollectionView!.decelerationRate = UIScrollViewDecelerationRateNormal;
-        hdCollectionView!.collectionViewLayout = hdFlowLayout
+        let layout = HDFlowLayout()
+        layout.flowLayoutSyncManager = flowLayoutSyncManager
+        hdCollectionView!.collectionViewLayout = layout
     }
     
     fileprivate func setupThumbnailCollectionView() {
@@ -59,23 +64,22 @@ class AlbumViewController: UIViewController {
         thumbnailCollectionView!.delegate = self
         thumbnailCollectionView!.cellSize = self
         thumbnailCollectionView!.alwaysBounceHorizontal = true
-        thumbnailCollectionView!.collectionViewLayout = thumbnailMasterFlowLayout
-        
+        thumbnailCollectionView!.collectionViewLayout = ThumbnailSlaveFlowLayout()
     }
     
-    fileprivate func setupHDCollectionViewFlowLayout() {
+    fileprivate func setupHDCollectionViewMeasurement() {
         hdCollectionView.cellFullSpacing = 100
         hdCollectionView.cellNormalWidth = hdCollectionView!.bounds.size.width - hdCollectionView.cellFullSpacing
         hdCollectionView.cellMaximumWidth = hdCollectionView!.bounds.size.width
         hdCollectionView.cellNormalSpacing = 0
         hdCollectionView.cellHeight = hdCollectionView.bounds.size.height
         hdCollectionViewRatio = hdCollectionView.frame.size.height / hdCollectionView.frame.size.width
-        if let layout = hdCollectionView.collectionViewLayout as? HDFlowLayout {
+        if var layout = hdCollectionView.collectionViewLayout as? FlowLayoutInvalidateBehavior {
             layout.shouldLayoutEverything = true
         }
     }
     
-    fileprivate func setupThumbnailCollectionViewFlowLayout() {
+    fileprivate func setupThumbnailCollectionViewMeasurement() {
         thumbnailCollectionView.cellNormalWidth = 30
         thumbnailCollectionView.cellFullSpacing = 15
         thumbnailCollectionView.cellNormalSpacing = 2
@@ -83,7 +87,7 @@ class AlbumViewController: UIViewController {
         thumbnailCollectionView.cellMaximumWidth = thumbnailMaximumWidth
         thumbnailCollectionViewThinnestRatio = thumbnailCollectionView.cellHeight / thumbnailCollectionView.cellNormalWidth
         thumbnailCollectionViewThickestRatio = thumbnailCollectionView.cellHeight / thumbnailMaximumWidth
-        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailMasterFlowLayout {
+        if var layout = hdCollectionView.collectionViewLayout as? FlowLayoutInvalidateBehavior {
             layout.shouldLayoutEverything = true
         }
     }
@@ -141,11 +145,14 @@ extension AlbumViewController: UICollectionViewDataSource {
 //MARK：- CollectionView Delegate
 extension AlbumViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if let collectionView = scrollView as? UICollectionView,
-            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
-            layout.foldCurrentCell()
+        if let collectionView = scrollView as? UICollectionView {
+            flowLayoutSyncManager.masterCollectionView = collectionView
+            if let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
+                layout.foldCurrentCell()
+            }
         }
     }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView,
             let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{

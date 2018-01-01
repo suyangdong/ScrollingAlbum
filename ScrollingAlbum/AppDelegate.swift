@@ -24,9 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         albumViewController.thumbnailPhotoModel = PhotoCollection(photos: [ "barton_nature_area_bridge.JPG", "barton_nature_lake.JPG", "barton_nature_swan.JPG", "bird_hills_nature_tree.JPG", "bird_hills_nature_sunset.JPG", "huron_river.JPG", "bird_hills_nature_foliage.JPG","leslie_park", "willowtree_apartment_sunset.jpg", "vertical_strip.png",  "winsor_skyline.png", "barton_nature_leeve.JPG"
             ])
-        albumViewController.hdFlowLayout = HDFlowLayout()
-        albumViewController.thumbnailMasterFlowLayout = ThumbnailMasterFlowLayout()
-        albumViewController.thumbnailMasterFlowLayout.accordionAnimationManager = AcoordionAnimationManager()
+        
+        albumViewController.flowLayoutSyncManager = FlowLayoutSyncManager()
         albumViewController.debug = false
         return true
     }
