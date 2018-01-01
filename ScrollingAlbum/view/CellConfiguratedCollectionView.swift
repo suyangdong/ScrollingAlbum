@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol CellConfiguration {
+protocol CellConfiguration {
     var cellMaximumWidth: CGFloat! { get set }
     var cellNormalWidth: CGFloat! { get set }
     var cellFullSpacing: CGFloat! { get set }
@@ -23,12 +23,12 @@ protocol CollectionViewCellSize {
 
 class CellConfiguratedCollectionView: UICollectionView, CellConfiguration{
     var cellSize: CollectionViewCellSize?
-    public func cellSize(for indexPath: IndexPath) -> CGSize? {
+    func cellSize(for indexPath: IndexPath) -> CGSize? {
         return cellSize?.collectionView(self, sizeForItemAt:indexPath)
     }
-    public var cellMaximumWidth: CGFloat!
-    public var cellNormalWidth: CGFloat!
-    public var cellFullSpacing: CGFloat!
-    public var cellNormalSpacing: CGFloat!
-    public var cellHeight: CGFloat!
+    var cellMaximumWidth: CGFloat!
+    var cellNormalWidth: CGFloat!
+    var cellFullSpacing: CGFloat!
+    var cellNormalSpacing: CGFloat!
+    var cellHeight: CGFloat!
 }

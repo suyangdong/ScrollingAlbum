@@ -18,14 +18,15 @@ class ThumbnailMasterFlowLayout: UICollectionViewFlowLayout,  CellBasicMeasureme
     fileprivate var normalCenterPoints: [CGPoint] = []
     var shouldLayoutEverything = true
     
-    public var animatedCellType: AnimatedCellType = .folding
+    var animatedCellType: AnimatedCellType = .folding
     
     // Dependency Injection
-    public var accordionAnimationManager: AccordionAnimation!
+    var accordionAnimationManager: AccordionAnimation!
+    var flowLayoutSyncManager: FlowLayoutSync!
     
-    public var animatedCellIndex: Int = 0
+    var animatedCellIndex: Int = 0
     
-    public var originalInsetAndContentOffset: (CGFloat, CGFloat) = (0, 0) {
+    var originalInsetAndContentOffset: (CGFloat, CGFloat) = (0, 0) {
         didSet {
             if animatedCellType == .unfolding {
                 unfoldingCenterOffset = originalInsetAndContentOffset.0 + originalInsetAndContentOffset.1 + cellNormalWidthAndSpacing / 2 - normalCenterPoints[currentCellIndex].x
@@ -111,6 +112,7 @@ extension ThumbnailMasterFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        flowLayoutSyncManager.didMove(collectionView!, to: IndexPath(item:currentCellIndex, section:0),  with: 0)
         
         var allAttributes: [UICollectionViewLayoutAttributes] = []
         for itemIndex in 0 ..< cellCount {
@@ -174,11 +176,6 @@ extension ThumbnailMasterFlowLayout {
             - adjacentSpacingOfAnimatedCell
             - animatedCellSize.width / 2
         
-    }
-    
-    fileprivate var contentNormalInset: CGFloat {
-        return collectionView!.superview!.frame.size.width / 2.0
-            - cellNormalWidthAndSpacing / 2
     }
     
     fileprivate var currentOffset: CGFloat {

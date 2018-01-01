@@ -10,6 +10,7 @@ import UIKit
 
 protocol CellBasicMeasurement: class {
     var currentCellIndex: Int { get }
+    var cellMaximumWidth: CGFloat { get }
 }
 
 extension CellBasicMeasurement where Self: UICollectionViewLayout {
