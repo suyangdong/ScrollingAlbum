@@ -9,8 +9,7 @@ Check out the `Photos` native app on iOS, you will find out the main interface i
 # How to learn
 :microscope: This [GitHub Page](https://ripplearc.github.io/iOS-UI-Scrollling-Album/) explains the details of the lab.
 
-![Alt Text](https://ripplearc.github.io/images/iOS/UI/ScrollingAlbum/scroll_example.gif)
-![](https://raw.github.com/pyro2927/GKLParallaxPictures/master/screenshot1.gif)
+![](https://ripplearc.github.io/images/iOS/UI/ScrollingAlbum/scroll_example.gif)
 
 
 
