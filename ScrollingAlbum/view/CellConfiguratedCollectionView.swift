@@ -17,12 +17,12 @@ protocol CellConfiguration {
     func cellSize(for indexPath:IndexPath) -> CGSize?
 }
 
-protocol CollectionViewCellSize {
+protocol CollectionViewCellSize: AnyObject {
     func collectionView(_ collectionView: UICollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize?
 }
 
 class CellConfiguratedCollectionView: UICollectionView, CellConfiguration{
-    var cellSize: CollectionViewCellSize?
+    weak var cellSize: CollectionViewCellSize?
     func cellSize(for indexPath: IndexPath) -> CGSize? {
         return cellSize?.collectionView(self, sizeForItemAt:indexPath)
     }
